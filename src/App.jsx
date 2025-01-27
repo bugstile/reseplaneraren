@@ -5,7 +5,6 @@ function App() {
 
   return (
     <>
-      <p>Hejsan!</p>
       <ActivityForm/>
     </>
   ) 

@@ -1,8 +1,50 @@
-# React + Vite
+```markdown
+# Reseplaneraren
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Beskrivning
 
-Currently, two official plugins are available:
+Activity Tracker är en enkel applikation för att hantera och spåra aktiviteter. Användare kan lägga till, redigera och ta bort aktiviteter, samt spara dem i webbläsarens lokala lagring så att de bevaras även efter att sidan har uppdaterats. Applikationen erbjuder en användarvänlig gränssnitt som gör det lätt att hålla koll på planerade aktiviteter.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funktioner
+
+- Lägg till nya aktiviteter med namn, plats och datum.
+- Redigera befintliga aktiviteter.
+- Ta bort aktiviteter.
+- Spara aktiviteter i webbläsarens lokala lagring.
+
+## Installation
+
+Följ dessa steg för att köra projektet lokalt:
+
+1. **Kloning av repository:**
+
+   ```bash
+   git clone https://github.com/bugstile/reseplaneraren.git
+   cd reseplaneraren
+   ```
+
+2. **Installera beroenden:**
+
+   Om du inte har Node.js och npm installerat, gör det först. Sedan kör:
+
+   ```bash
+   npm install
+   ```
+
+3. **Köra applikationen:**
+
+   Starta applikationen med följande kommando:
+
+   ```bash
+   npm run dev
+   ```
+
+   Öppna din webbläsare och navigera till `http://localhost:3000` för att se applikationen i aktion.
+
+## Användning
+
+När applikationen är igång kan du:
+
+1. Fyll i fälten för namn, plats och datum för en aktivitet.
+2. Klicka på "Lägg till aktivitet" för att spara den.
+3. Redigera eller ta bort aktiviteter genom att använda knapparna bredvid varje aktivitet i listan.
