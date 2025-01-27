@@ -38,7 +38,7 @@ Följ dessa steg för att köra projektet lokalt:
    npm run dev
    ```
 
-   Öppna din webbläsare och navigera till `http://localhost:3000` för att se applikationen i aktion.
+   Öppna din webbläsare och navigera till `http://localhost:port` för att se applikationen i aktion.
 
 ## Användning
 
