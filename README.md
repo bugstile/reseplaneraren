@@ -1,9 +1,8 @@
-```markdown
 # Reseplaneraren
 
 ## Beskrivning
 
-Activity Tracker är en enkel applikation för att hantera och spåra aktiviteter. Användare kan lägga till, redigera och ta bort aktiviteter, samt spara dem i webbläsarens lokala lagring så att de bevaras även efter att sidan har uppdaterats. Applikationen erbjuder en användarvänlig gränssnitt som gör det lätt att hålla koll på planerade aktiviteter.
+Reseplaneraren är en enkel applikation för att hantera och spåra aktiviteter. Användare kan lägga till, redigera och ta bort aktiviteter, samt spara dem i webbläsarens lokala lagring så att de bevaras även efter att sidan har uppdaterats. Applikationen erbjuder en användarvänlig gränssnitt som gör det lätt att hålla koll på planerade aktiviteter.
 
 ## Funktioner
 
@@ -39,7 +38,7 @@ Följ dessa steg för att köra projektet lokalt:
    npm run dev
    ```
 
-   Öppna din webbläsare och navigera till `http://localhost:3000` för att se applikationen i aktion.
+   Öppna din webbläsare och navigera till `http://localhost:port` för att se applikationen i aktion.
 
 ## Användning
 
