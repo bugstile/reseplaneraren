@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import ActivityForm from './components/ActivityForm.jsx'
+import { useState } from 'react';
+import ActivityForm from './components/ActivityForm.jsx'; 
 
 function App() {
-
   return (
     <>
-      <ActivityForm/>
+      <ActivityForm />
     </>
-  ) 
+  ); 
 }
 
-export default App
+export default App; 

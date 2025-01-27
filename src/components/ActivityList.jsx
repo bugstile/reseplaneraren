@@ -1,6 +1,6 @@
 // ActivityList.jsx
 import React from 'react';
-import ActivityItem from './ActivityItem'; // Import ActivityItem
+import ActivityItem from './ActivityItem';
 
 function ActivityList({ activities, onRemoveActivity, onEditActivity }) {
   return (
@@ -8,9 +8,9 @@ function ActivityList({ activities, onRemoveActivity, onEditActivity }) {
       {activities.map((activity) => (
         <ActivityItem 
           key={activity.id} 
-          activity={activity} 
-          onEdit={onEditActivity} 
-          onRemove={onRemoveActivity} 
+          activity={activity}
+          onEdit={onEditActivity}
+          onRemove={onRemoveActivity}
         />
       ))}
     </ul>

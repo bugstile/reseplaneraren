@@ -2,84 +2,105 @@ import React, { useState, useEffect } from "react";
 import Input from './Input';
 import ActivityList from "./ActivityList.jsx";
 
-const ActivityForm = React.memo(() => {
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
-  const [activities, setActivities] = useState([]);
-  const [error, setError] = useState("");
-  const [editingActivityId, setEditingActivityId] = useState(null);
+// Functional component for the Activity Form
+const ActivityForm = () => {
+  const [state, setState] = useState({
+    name: "", // Activity name
+    location: "", // Activity location
+    date: "", // Activity date
+    activities: [], // List of all activities
+    error: "", // Error message for form validation
+    editingActivityId: null // ID of the activity being edited
+  });
 
-  // Load activities from local storage on component mount
+  // Load activities from local storage when the component mounts
   useEffect(() => {
     const loadedActivities = JSON.parse(localStorage.getItem("activities")) || [];
     console.log("Loaded activities:", loadedActivities);
-    setActivities(loadedActivities);
+    setState(prevState => ({ ...prevState, activities: loadedActivities }));
   }, []);
 
   // Save activities to local storage whenever they change
   useEffect(() => {
-    localStorage.setItem("activities", JSON.stringify(activities));
-    console.log("Saved activities to local storage:", activities);
-  }, [activities]);
+    localStorage.setItem("activities", JSON.stringify(state.activities));
+    console.log("Saved activities to local storage:", state.activities);
+  }, [state.activities]);
 
+  // Function to handle adding or updating an activity
   const handleAddActivity = () => {
     console.log("Adding activity...");
+    const { name, location, date, editingActivityId } = state; 
+
+    // Check if all fields are filled
     if (name && location && date) {
       if (editingActivityId) {
-        setActivities(activities.map(activity => 
-          activity.id === editingActivityId 
-            ? { ...activity, name, location, date } 
-            : activity
-        ));
-        setEditingActivityId(null);
+        setState(prevState => ({
+          ...prevState,
+          activities: prevState.activities.map(activity =>
+            activity.id === editingActivityId
+              ? { ...activity, name, location, date } 
+              : activity 
+          ),
+          editingActivityId: null // Reset editing state
+        }));
       } else {
+        // Create a new activity
         const newActivity = { id: Date.now(), name, location, date };
-        setActivities([...activities, newActivity]);
+        setState(prevState => ({
+          ...prevState,
+          activities: [...prevState.activities, newActivity]
+        }));
       }
-      setName("");
-      setLocation("");
-      setDate("");
-      setError("");
+      // Reset form
+      setState(prevState => ({ ...prevState, name: "", location: "", date: "", error: "" }));
     } else {
-      setError("Var vänlig fyll in alla fält.");
+      // Show error if any field is empty
+      setState(prevState => ({ ...prevState, error: "Var vänlig fyll in alla fält." }));
     }
   };
 
+  // Function to handle removing an activity
   const handleRemoveActivity = (id) => {
-    const newActivities = activities.filter(activity => activity.id !== id);
-    setActivities(newActivities);
+    setState(prevState => ({
+      ...prevState,
+      activities: prevState.activities.filter(activity => activity.id !== id)
+    }));
   };
 
+  // Function to handle editing an activity
   const handleEditActivity = (activity) => {
-    setName(activity.name);
-    setLocation(activity.location);
-    setDate(activity.date);
-    setEditingActivityId(activity.id);
+    setState(prevState => ({
+      ...prevState,
+      name: activity.name,
+      location: activity.location,
+      date: activity.date,
+      editingActivityId: activity.id
+    }));
   };
 
+  //Render HTML
   return (
     <>
       <section className="activity-form">
-        <Input label="Namn" value={name} onChange={setName} type="text" />
-        <Input label="Plats" value={location} onChange={setLocation} type="text" />
-        <Input label="Datum" value={date} onChange={setDate} type="date" />
-        {error && <p className="error">{error}</p>}
+        <Input label="Namn" value={state.name} onChange={(value) => setState(prev => ({ ...prev, name: value }))} type="text" />
+        <Input label="Plats" value={state.location} onChange={(value) => setState(prev => ({ ...prev, location: value }))} type="text" />
+        <Input label="Datum" value={state.date} onChange={(value) => setState(prev => ({ ...prev, date: value }))} type="date" />
+        {state.error && <p className="error">{state.error}</p>}
         <button className="button button-update" onClick={handleAddActivity}>
-          {editingActivityId ? "Uppdatera aktivitet" : "Lägg till aktivitet"}
+          {state.editingActivityId ? "Uppdatera aktivitet" : "Lägg till aktivitet"}
         </button>
       </section>
 
       <section className="test">
         <h2 className="activities">Activities</h2>
         <ActivityList 
-          activities={activities} 
+          activities={state.activities} 
           onRemoveActivity={handleRemoveActivity} 
           onEditActivity={handleEditActivity}
         />
       </section>
     </>
   );
-});
+};
 
 export default ActivityForm;
