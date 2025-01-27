@@ -47,5 +47,3 @@ När applikationen är igång kan du:
 1. Fyll i fälten för namn, plats och datum för en aktivitet.
 2. Klicka på "Lägg till aktivitet" för att spara den.
 3. Redigera eller ta bort aktiviteter genom att använda knapparna bredvid varje aktivitet i listan.
-
-```
